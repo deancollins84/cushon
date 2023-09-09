@@ -1,0 +1,28 @@
+{
+  "name": "deancollins84/cushon",
+  "description": "Retail tax-free saving account service",
+  "homepage": "https://github.com/deancollins84/cushon",
+  "authors": [
+    {
+      "name": "Dean Collins",
+      "email": "deancollins84@gmail.com"
+    }
+  ],
+  "config": {
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "require": {
+    "php": "^8.2",
+    "php-decimal/php-decimal": "^1.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10"
+  }
+}
