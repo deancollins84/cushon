@@ -8,6 +8,7 @@
   - [Account transactions](#account-transactions)
   - [Available investment funds](#available-investment-funds)
 - [OpenAPI 3 / Swagger documentation](#openapi-3--swagger-documentation)
+- [Docker containers and PHPUnit tests](#docker-containers-and-phpunit-tests)
 
 ## Top level assumptions
 - Natwest relationship with Cushon <em>could</em> open up international ventures.
