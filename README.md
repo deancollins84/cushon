@@ -235,4 +235,4 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 
 ## OpenAPI 3 / Swagger documentation
 API design for the above scenarios:
-[SwaggerHub - Retail tax-free saving account service](https://app.swaggerhub.com/apis-docs/dean.collins/cushon-tax-free-savings/1.0.0)
+[SwaggerHub - Retail tax-free saving account service](https://app.swaggerhub.com/apis/dean.collins/cushon-tax-free-savings/1.0.0)
