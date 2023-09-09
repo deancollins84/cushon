@@ -236,3 +236,20 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 ## OpenAPI 3 / Swagger documentation
 API design for the above scenarios:
 [SwaggerHub - Retail tax-free saving account service](https://app.swaggerhub.com/apis/dean.collins/cushon-tax-free-savings/1.0.0)
+
+## Docker containers and PHPUnit tests
+Two simple docker containers included, one for PHP CLI and one for Composer.
+
+Build and start the containers;
+```
+docker-compose up -d --build
+```
+Install composer dependencies with ignore platform reqs due to required decimal package needing it;
+```
+docker-compose run composer install --ignore-platform-reqs
+```
+Run PHPUnit tests;
+```
+docker-compose run php vendor/bin/phpunit tests
+
+```
