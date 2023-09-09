@@ -3,13 +3,15 @@ Cushon
 
 ## Top level assumptions.
 - Natwest relationship with Cushon <em>could</em> open up international ventures.
-- A solution exists for employers and employees currently in the UK ISA space.
-- <em>"Cushon would like to keep the functionality for retail ISA customers separate from it’s Employer based offering where practical."</em>; 
+- <em>Cushon already offers ISAs and Pensions to Employees of Companies (Employers) who have an existing arrangement with Cushon</em>;
+initial interpretation without detailed knowledge of existing functionality:
+- - a solution exists for employers and employees currently in the UK ISA space.
+- <em>"Cushon would like to keep the functionality for retail ISA customers separate from it’s Employer based offering where practical"</em>; 
 initial interpretation without detailed knowledge of existing domain and architectural would be:
 - - business logic (and requirements) between retail and existing implementation could be different,
 - - and to build solution externally; possibly a microservice,
 - Funds assumed to be part of this new retail domain.
-- Initial thoughts are in using banking terms;
+- Initial thoughts are in using banking terms (ubiquitous language would be agreed with product team):
 - - "deposit" for putting money into ISA account, 
 - - "in", "out" for transactions.
 
@@ -19,7 +21,7 @@ Illustrate possible solution for new functionality.
 Authentication will not be covered.
 
 Will revolve around the <strong>abstracted idea of tax-free savings accounts</strong> for potential future proofing
-for non UK equivalent saving accounts (Natwest).
+for non UK equivalent saving accounts (Natwest <em>could</em> introduced).
 
 Ideally a new microservice; <strong>Tax Free Savings Account Service</strong>.
 Considered domain to possibly be <strong>Investment Account Service</strong> in contrast to tax-free savings as abstract concept.
@@ -76,7 +78,7 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
       And I should see why my request failed
 ```
 
-### Transferring money into an ISA account.
+### Depositing (transferring) money into an ISA account.
 
 > #### Assumptions
 > - Mechanism to transfer money between accounts (internal?/external) exists, for example;
@@ -135,8 +137,8 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 
   Scenario Customer attempts to deposit money into ISA account for a single fund however allowance is already 75% full.
     Given I am a depositing money into my ISA account
-      And I have already transferred £15,000.00 before now
-     When I request POST "/customer/{customerId}/account/{accountId}/transfer"
+      And I have already deposited £15,000.00 before now
+     When I request POST "/customer/{customerId}/account/{accountId}/deposit"
       And I set JSON payload to
       """
       {
@@ -149,9 +151,9 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
     Then I should get a status code of 422
     And I should see why my request failed
 
-  Scenario Customer attempts to transfer money into ISA account split across multiple funds.
-    Given I am a transferring money into my ISA account
-     When I request POST "/customer/{customerId}/account/{accountId}"
+  Scenario Customer attempts to deposit money into ISA account split across multiple funds.
+    Given I am a depositing money into my ISA account
+     When I request POST "/customer/{customerId}/account/{accountId}/deposit"
       And I set JSON payload to
       """
       {
@@ -172,7 +174,7 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 ### Available investment funds
 
 > #### Assumptions
-> - Mechanism to transfer money between accounts (internal?/external) exists, for example;
+> - Retail customers have a different set of available funds.
 
 ```gherkin
   Feature: Available investment funds.
@@ -183,17 +185,17 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
       And I have a valid ISA account
      When making requests via a JSON API.
 
-  Scenario: Customer who would like to transfer money into ISA account can see available funds.
-    Given I am transferring money into my ISA account
+  Scenario: Customer who would like to deposit money into ISA account can see available funds.
+    Given I am depositing money into my ISA account
       And I need to view available funds
      When I request GET "/funds"
      Then I should get a status code of 200
       And See multiple results
 
-  Scenario: Customer who would like to transfer money into ISA account can see only the latest available fund.
-    Given I am transferring money into my ISA account
-    And I need to view available funds
-    When I request POST "/funds?limit=1"
-    Then I should get a status code of 200
-     And See only one result
+  Scenario: Customer who would like to deposit money into ISA account can see only the latest available fund.
+    Given I am deposit money into my ISA account
+      And I need to view available funds
+     When I request POST "/funds?limit=1"
+     Then I should get a status code of 200
+      And See only one result
 ```
