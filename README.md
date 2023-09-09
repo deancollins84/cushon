@@ -190,7 +190,7 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
       And I need to view available funds
      When I request GET "/funds"
      Then I should get a status code of 200
-      And See multiple results
+      And See multiple results, paginated
 
   Scenario: Customer who would like to deposit money into ISA account can see only the latest available fund.
     Given I am deposit money into my ISA account
