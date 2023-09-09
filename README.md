@@ -41,8 +41,8 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 > #### Assumptions
 > - Customer records exists outside the scope of this project.
 > - Account type would be to introduce other future tax-free savings accounts, 
-> -  - Junior ISA within the UK,
-> -  - ISA equivalent / similar tax saving structures outside the UK i.e. Roth IRA in the USA.
+> -  - Junior ISA, Stocks and Shares ISA(Cushon fund equivalent?), Lifetime ISAs, etc within the UK,
+> -  - ISA non UK equivalent / similar tax saving structures outside the UK i.e. Roth IRA in the USA.
 > - Currency if omitted from payload will be assumed to be GBP.
 
 ```gherkin
