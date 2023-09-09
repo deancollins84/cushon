@@ -1,5 +1,13 @@
 # Cushon
-Cushon
+
+- [Top level assumptions](#top-level-assumptions)
+- [Proposal](#proposal)
+- [Scenarios](#scenarios)
+  - [Opening an ISA account](#opening-an-isa-account)
+  - [Depositing (transferring) money into an ISA account](#depositing-transferring-money-into-an-isa-account)
+  - [Account transactions](#account-transactions)
+  - [Available investment funds](#available-investment-funds)
+- [OpenAPI 3 / Swagger documentation](#openapi-3--swagger-documentation)
 
 ## Top level assumptions
 - Natwest relationship with Cushon <em>could</em> open up international ventures.
@@ -28,7 +36,7 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 
 ## Scenarios
 
-### Opening ISA account.
+### Opening an ISA account.
 
 > #### Assumptions
 > - Customer records exists outside the scope of this project.
@@ -224,3 +232,7 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
      Then I should get a status code of 200
       And See only one result, but still paginated
 ```
+
+## OpenAPI 3 / Swagger documentation
+API design for the above scenarios:
+[SwaggerHub - Retail tax-free saving account service](https://app.swaggerhub.com/apis-docs/dean.collins/cushon-tax-free-savings/1.0.0)
