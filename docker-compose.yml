@@ -1,0 +1,17 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: php_cushon
+    volumes:
+      - .:/src
+    working_dir: /src
+  composer:
+    image: composer:2.6.2
+    container_name: composer_cushon
+    volumes:
+      - .:/src
+    working_dir: /src
+    entrypoint: [ 'composer' ]
