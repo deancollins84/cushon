@@ -1,7 +1,7 @@
 # Cushon
 Cushon
 
-## Top level assumptions.
+## Top level assumptions
 - Natwest relationship with Cushon <em>could</em> open up international ventures.
 - <em>Cushon already offers ISAs and Pensions to Employees of Companies (Employers) who have an existing arrangement with Cushon</em>;
 initial interpretation without detailed knowledge of existing functionality:
@@ -21,7 +21,7 @@ Illustrate possible solution for new functionality.
 Authentication will not be covered.
 
 Will revolve around the <strong>abstracted idea of tax-free savings accounts</strong> for potential future proofing
-for non UK equivalent saving accounts (Natwest <em>could</em> introduced).
+for non UK equivalent saving accounts (Natwest <em>could</em> introduce).
 
 Ideally a new microservice; <strong>Tax Free Savings Account Service</strong>.
 Considered domain to possibly be <strong>Investment Account Service</strong> in contrast to tax-free savings as abstract concept.
@@ -171,6 +171,31 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
      And I should see why my request failed
 ```
 
+### Account transactions
+
+```gherkin
+  Feature: Customer would like to see their transaction history on their ISA account.
+
+  Background:
+    Given I am an authenticated user
+      And I have an existing customer account
+      And I have a valid ISA account
+      And I have made deposits
+     When making requests via a JSON API.
+
+  Scenario: Customer who would like to see all the transactions on their ISA account.
+    Given I want to see my latest transactions
+     When I request GET "/customer/{customerId}/account/{accountId}/transaction"
+     Then I should get a status code of 200
+      And See multiple results, paginated
+
+  Scenario: Customer who would like see the latest transaction on their ISA account.
+    Given I want to see a specific transaction
+     When I request GET "/customer/{customerId}/account/{accountId}/transaction?limit=1"
+     Then I should get a status code of 200
+      And See only one result, but still paginated
+```
+
 ### Available investment funds
 
 > #### Assumptions
@@ -197,5 +222,5 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
       And I need to view available funds
      When I request POST "/funds?limit=1"
      Then I should get a status code of 200
-      And See only one result
+      And See only one result, but still paginated
 ```
