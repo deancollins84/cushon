@@ -2,26 +2,27 @@
 Cushon
 
 ## Top level assumptions.
-- Natwest relationship with Cushon could open up international ventures.
+- Natwest relationship with Cushon <em>could</em> open up international ventures.
 - A solution exists for employers and employees currently in the UK ISA space.
 - <em>"Cushon would like to keep the functionality for retail ISA customers separate from it’s Employer based offering where practical."</em>; 
 initial interpretation without detailed knowledge of existing domain and architectural would be:
 - - business logic (and requirements) between retail and existing implementation could be different,
-- - and to build solution externally; as a microservice,
+- - and to build solution externally; possibly a microservice,
 - Funds assumed to be part of this new retail domain.
 - Initial thoughts are in using banking terms;
-- - "deposit" for invest into ISA, 
-- - "in", "out" for transactions).
+- - "deposit" for putting money into ISA account, 
+- - "in", "out" for transactions.
 
 ## Proposal
 Illustrate possible solution for new functionality.
 
 Authentication will not be covered.
 
-Will resolved around the <strong>abstracted idea of tax free savings accounts</strong> for potential future proofing
-for non UK equivalent saving accounts.
+Will revolve around the <strong>abstracted idea of tax-free savings accounts</strong> for potential future proofing
+for non UK equivalent saving accounts (Natwest).
 
-Ideally a new microservice; <strong>Tax Free Savings Account Service</strong>
+Ideally a new microservice; <strong>Tax Free Savings Account Service</strong>.
+Considered domain to possibly be <strong>Investment Account Service</strong> in contrast to tax-free savings as abstract concept.
 
 ## Scenarios
 
@@ -29,7 +30,7 @@ Ideally a new microservice; <strong>Tax Free Savings Account Service</strong>
 
 > #### Assumptions
 > - Customer records exists outside the scope of this project.
-> - Account type would be to introduce other future investment type accounts, 
+> - Account type would be to introduce other future tax-free savings accounts, 
 > -  - Junior ISA within the UK,
 > -  - ISA equivalent / similar tax saving structures outside the UK i.e. Roth IRA in the USA.
 > - Currency if omitted from payload will be assumed to be GBP.
