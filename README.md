@@ -248,14 +248,13 @@ Two simple docker containers included, one for PHP CLI and one for Composer.
 
 Build and start the containers;
 ```
-docker-compose up -d --build
+docker compose up -d --build
 ```
 Install composer dependencies with ignore platform reqs due to required decimal package needing it;
 ```
-docker-compose run composer install --ignore-platform-reqs
+docker compose run composer install --ignore-platform-reqs
 ```
 Run PHPUnit tests;
 ```
-docker-compose run php vendor/bin/phpunit tests
-
+docker compose run php vendor/bin/phpunit tests
 ```
