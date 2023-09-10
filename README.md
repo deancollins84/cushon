@@ -245,7 +245,7 @@ Database design for the above scenarios:
 
 > [!NOTE]
 > Design choice of having both an integer ID (technical key; PK) and a string UUID (unique) in the database table is just my opinion. 
-> I Recognise this is effectively redundant, just personal preference to not expose the technical key and have a clear separation. Uuid would be indexed.
+> I recognise this is effectively redundant, just personal preference to not expose the technical key and have a clear separation. Uuid would be indexed.
 
 ## Docker containers and PHPUnit tests
 Two simple docker containers included, one for PHP CLI and one for Composer.
