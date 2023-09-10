@@ -10,6 +10,7 @@
 - [OpenAPI 3 / Swagger documentation](#openapi-3--swagger-documentation)
 - [ERD / Lucidchart documentation](#erd--lucidchart-documentation)
 - [Docker containers and PHPUnit tests](#docker-containers-and-phpunit-tests)
+- [TDD; Early steps](#tdd-early-steps)
 
 ## Top level assumptions
 - Natwest relationship with Cushon <em>could</em> open up international ventures.
@@ -282,7 +283,7 @@ Run PHPUnit tests;
 docker compose run php vendor/bin/phpunit tests
 ```
 
-## Early steps in TDD
+## TDD; Early steps
 
 Focused on the core entities identified in the README.MD:
 - Investment ISA (wrapped functionality of a more simple entity that could exist (General account, standard ISA, etc)),
