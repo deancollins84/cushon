@@ -8,6 +8,7 @@
   - [Account transactions](#account-transactions)
   - [Available investment funds](#available-investment-funds)
 - [OpenAPI 3 / Swagger documentation](#openapi-3--swagger-documentation)
+- [ERD / Lucidchart documentation](#erd--lucidchart-documentation)
 - [Docker containers and PHPUnit tests](#docker-containers-and-phpunit-tests)
 
 ## Top level assumptions
@@ -237,6 +238,10 @@ Considered domain to possibly be <strong>Investment Account Service</strong> in 
 ## OpenAPI 3 / Swagger documentation
 API design for the above scenarios:
 [SwaggerHub - Retail tax-free saving account service](https://app.swaggerhub.com/apis/dean.collins/cushon-tax-free-savings/1.0.0)
+
+## ERD / Lucidchart documentation
+Database design for the above scenarios:
+[Lucidchart - Retail tax-free saving account service](https://lucid.app/documents/view/11a53f1d-cf00-450f-b529-357c7dede8a3)
 
 ## Docker containers and PHPUnit tests
 Two simple docker containers included, one for PHP CLI and one for Composer.
