@@ -1,5 +1,6 @@
 # Cushon
 
+- [Brief](#brief)
 - [Top level assumptions](#top-level-assumptions)
 - [Proposal](#proposal)
 - [Scenarios](#scenarios)
@@ -11,6 +12,24 @@
 - [ERD / Lucidchart documentation](#erd--lucidchart-documentation)
 - [Docker containers and PHPUnit tests](#docker-containers-and-phpunit-tests)
 - [TDD; Early steps](#tdd-early-steps)
+
+## Brief
+Cushon already offers ISAs and Pensions to Employees of Companies (Employers) who have an existing arrangement with
+Cushon. Cushon would like to be able to offer ISA investments to retail (direct) customers who are not associated with an
+employer. Cushon would like to keep the functionality for retail ISA customers separate from it’s Employer based offering
+where practical.
+
+When customers invest into a Cushon ISA they should be able to select a single fund from a list of available options. Currently
+they will be restricted to selecting a single fund however in the future we would anticipate allowing selection of multiple
+options.
+
+Once the customer’s selection has been made, they should also be able to provide details of the amount they would like to
+invest.
+
+Given the customer has both made their selection and provided the amount the system should record these values and allow
+these details to be queried at a later date.
+As a specific use case please consider a customer who wishes to deposit £25,000 into a Cushon ISA all into the Cushon
+Equities Fund.
 
 ## Top level assumptions
 - Natwest relationship with Cushon <em>could</em> open up international ventures.
