@@ -85,7 +85,7 @@ class InvestmentIsaTest extends TestCase
      *
      * @return void
      */
-    public function test_invest_into_single_find_and_check_remaining_allowance() : void {
+    public function test_invest_into_single_fund_and_check_remaining_allowance() : void {
         // Act.
         $this->investmentIsa->invest(
             new Fund('Cushon Equities Fund'),
