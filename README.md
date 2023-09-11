@@ -5,7 +5,8 @@
 - [Proposal](#proposal)
 - [Scenarios](#scenarios)
   - [Opening an ISA account](#opening-an-isa-account)
-  - [Depositing (transferring) money into an ISA account](#depositing-transferring-money-into-an-isa-account)
+  - [Investing (transferring/depositing) money into an Investment ISA account](#investing-transferringdepositing-money-into-an-investment-isa-account)
+  - [Investment ISA account investment history](#investment-isa-account-investment-history)
   - [Account transactions](#account-transactions)
   - [Available investment funds](#available-investment-funds)
 - [OpenAPI 3 / Swagger documentation](#openapi-3--swagger-documentation)
@@ -72,7 +73,7 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
 
 ## Scenarios
 
-### Opening an ISA account.
+### Opening an ISA account
 
 > #### Assumptions
 > - Customer records exists outside the scope of this project.
@@ -122,7 +123,7 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
       And I should see why my request failed
 ```
 
-### Investing (transferring/depositing) money into an ISA account.
+### Investing (transferring/depositing) money into an Investment ISA account
 
 > #### Assumptions
 > - Mechanism to transfer money between accounts (internal?/external) exists, for example;
@@ -145,7 +146,7 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
 
   Scenario Customer invests money into an Investment ISA account for a single fund.
     Given I am a investing money into my Investment ISA account
-     When I request POST "/customer/{customerId}/account/{accountId}/invest"
+     When I request POST "/customer/{customerId}/account/{accountId}/investment"
       And I set JSON payload to
       """
       {
@@ -160,13 +161,13 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
     
   Scenario Customer attempts to invest money into an Investment ISA account for a single fund and provides no details.
     Given I am a investing money into my Investment ISA account
-     When I request POST "/customer/{customerId}/account/{accountId}/invest"
+     When I request POST "/customer/{customerId}/account/{accountId}/investment"
      Then I should get a status code of 422
       And I should see why my request failed
 
   Scenario Customer attempts to invest money into an Investment ISA account for a single fund with amount above allowance of £20,000.
     Given I am a investing money into my Investment ISA account
-     When I request POST "/customer/{customerId}/account/{accountId}/invest"
+     When I request POST "/customer/{customerId}/account/{accountId}/investment"
       And I set JSON payload to
       """
       {
@@ -182,7 +183,7 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
   Scenario Customer attempts to invest money into an Investment ISA account for a single fund however allowance is already 75% full.
     Given I am a investing money into my Investment ISA account
       And I have already invested £15,000.00 before now
-     When I request POST "/customer/{customerId}/account/{accountId}/invest"
+     When I request POST "/customer/{customerId}/account/{accountId}/investment"
       And I set JSON payload to
       """
       {
@@ -197,7 +198,7 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
 
   Scenario Customer attempts to invest money into an Investment ISA account split across multiple funds.
     Given I am a investing money into my ISA account
-     When I request POST "/customer/{customerId}/account/{accountId}/invest"
+     When I request POST "/customer/{customerId}/account/{accountId}/investment"
       And I set JSON payload to
       """
       {
@@ -214,11 +215,36 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
     Then I should get a status code of 422
      And I should see why my request failed
 ```
+### Investment ISA account investment history
+
+```gherkin
+  Feature: Customer has invested money into a fund over a period of time.
+
+  Background:
+    Given I am an authenticated user
+      And I have an existing customer account
+      And I have a valid Investment ISA account
+      And I have made investments into a fund
+     When making requests via a JSON API.
+
+  Scenario: Customer who would like to see all the investments (made from Investment ISA account) they have made into multiple funds.
+    Given I want to see my investment summary
+     When I request GET "/customer/{customerId}/account/{accountId}/investment"
+     Then I should get a status code of 200
+     And See multiple results, paginated
+     And Grouped by funds and summed total amount invested
+
+  Scenario: Customer who would like to see an investment (made from Investment ISA account) to a fund and the breakdown of amounts (i.e. monthly deposits).
+    Given I want to see a specific transaction
+     When I request GET "/customer/{customerId}/account/{accountId}/investment/{investmentId}"
+     Then I should get a status code of 200
+      And See only one result, but still paginated
+```
 
 ### Account transactions
 
 > [!NOTE]
-> Touching on transactions briefly, however would need a more in depth exploration .
+> Touching on transactions briefly, however would need a more in depth exploration.
 > Initially thinking here, if money comes into the system we just need to keep track of it.
 
 ```gherkin
