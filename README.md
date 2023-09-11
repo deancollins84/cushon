@@ -10,9 +10,9 @@
   - [Account transactions](#account-transactions)
   - [Available investment funds](#available-investment-funds)
 - [OpenAPI 3 / Swagger documentation](#openapi-3--swagger-documentation)
-- [ERD / Lucidchart documentation](#erd--lucidchart-documentation)
 - [Docker containers and PHPUnit tests](#docker-containers-and-phpunit-tests)
 - [TDD; Early steps](#tdd-early-steps)
+- [ERD / Lucidchart documentation](#erd--lucidchart-documentation)
 
 ## Brief
 Cushon already offers ISAs and Pensions to Employees of Companies (Employers) who have an existing arrangement with
@@ -304,14 +304,6 @@ Decorator pattern initially comes to mind to keep adding functionality as requir
 API design for the above scenarios:
 [SwaggerHub - Retail tax-free saving account service](https://app.swaggerhub.com/apis/dean.collins/cushon-tax-free-savings/1.0.0)
 
-## ERD / Lucidchart documentation
-Database design for the above scenarios:
-[Lucidchart - Retail tax-free saving account service](https://lucid.app/documents/view/11a53f1d-cf00-450f-b529-357c7dede8a3)
-
-> [!NOTE]
-> Design choice of having both an integer ID (technical key; PK) and a string UUID (unique) in the database table is just my opinion. 
-> I recognise this is effectively redundant, just personal preference to not expose the technical key and have a clear separation. Uuid would be indexed.
-
 ## Docker containers and PHPUnit tests
 Two simple docker containers included, one for PHP CLI and one for Composer.
 
@@ -336,3 +328,11 @@ Focused on the core entities identified in the README.MD:
 - And the invested Fund with seperated amounts over time (i.e. add money monthly for example).
 
 More iterative rounds of refactoring required while identify more test cases.
+
+## ERD / Lucidchart documentation
+Database design for the above scenarios:
+[Lucidchart - Retail tax-free saving account service](https://lucid.app/documents/view/11a53f1d-cf00-450f-b529-357c7dede8a3)
+
+> [!NOTE]
+> Design choice of having both an integer ID (technical key; PK) and a string UUID (unique) in the database table is just my opinion.
+> I recognise this is effectively redundant, just personal preference to not expose the technical key and have a clear separation. Uuid would be indexed.
